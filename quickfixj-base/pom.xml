@@ -202,16 +202,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<configuration>
-					<instructions>
-						<Export-Package>quickfix,quickfix.*,org.quickfixj,org.quickfixj.*</Export-Package>
-						<Private-Package />
-					</instructions>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
 

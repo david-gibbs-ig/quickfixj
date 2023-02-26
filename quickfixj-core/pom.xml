@@ -7,7 +7,7 @@
 	</parent>
 
 	<artifactId>quickfixj-core</artifactId>
-	<packaging>bundle</packaging>
+	<packaging>jar</packaging>
 
 	<name>QuickFIX/J Core engine</name>
 	<description>The core QuickFIX/J engine</description>
@@ -188,40 +188,35 @@
 				<directory>src/main/resources</directory>
 			</testResource>
 		</testResources>
-
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
-					<includes>
-						<include>quickfix/**</include>
-						<include>org/**</include>
-						<include>quickfix/field/*</include>
-						<include>quickfix/field/converter/*</include>
-						<include>FIX*.xml</include>
-					</includes>
-					<excludes>
-						<!-- exclude>quickfix/field/*</exclude -->
-						<exclude>quickfix/fix*/**</exclude>
+					<!-- exclude classes from dependencies with shared package names -->
+					<!--excludes>
+						<exclude>quickfix/field/**</exclude>
 					</excludes>
+					<includes>
+						<include>quickfix/*</include>
+						<include>quickfix/mina/**</include>
+						<include>org/quickfixj/jmx/**</include>
+					</includes -->
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 				<configuration>
-					<includes>
-						<include>quickfix/**</include>
-						<include>org/**</include>
-						<include>quickfix/field/*</include>
-						<include>quickfix/field/converter/*</include>
-						<include>FIX*.xml</include>
-					</includes>
 					<excludes>
-						<!-- exclude>quickfix/field/*</exclude -->
-						<exclude>quickfix/fix*/**</exclude>
+						<exclude>quickfix/field/**</exclude>
+						<exclude>quickfix/field/BooleanField.class</exclude>
 					</excludes>
+					<includes>
+						<include>quickfix/*</include>
+						<include>quickfix/mina/**</include>
+						<include>org/quickfixj/jmx/**</include>
+					</includes>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -234,7 +229,6 @@
 						  <goal>jar</goal>
 					  </goals>
 					  <configuration>
-						  <!-- Uncomment this to skip execution as this module requires more than 9gb memory -->
 						  <skip>true</skip>
 						  <source>8</source>
 						  <sourcepath>src/main/java:${project.build.directory}/generated-sources</sourcepath>
@@ -242,16 +236,6 @@
 				  </execution>
 				</executions>
 		   </plugin>
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<configuration>
-					<instructions>
-						<Export-Package>quickfix,quickfix.*,org.quickfixj,org.quickfixj.*</Export-Package>
-						<Private-Package />
-					</instructions>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
 

@@ -42,19 +42,19 @@ Pull requests are always welcome! Best is if you added a unit test to show that 
 
 Fastest: clone the repo and issue the following command.
 ```
-$ mvn clean package -Dmaven.javadoc.skip=true -DskipTests -PskipBundlePlugin,minimal-fix-latest
+$ mvn clean package -Dmaven.javadoc.skip=true -DskipTests -Pminimal-fix-latest
 ```
 
 Slower: if you only want to skip the acceptance test suite:
 ```
-$ mvn clean package -Dmaven.javadoc.skip=true -DskipAT=true -PskipBundlePlugin,minimal-fix-latest
+$ mvn clean package -Dmaven.javadoc.skip=true -DskipAT=true -Pminimal-fix-latest
 ```
 
 Slow: if you want to run all tests:
 ```
-$ mvn clean package -Dmaven.javadoc.skip=true -PskipBundlePlugin,minimal-fix-latest
+$ mvn clean package -Dmaven.javadoc.skip=true -Pminimal-fix-latest
 ```
-NB: If you want to use the resulting JARs in an OSGi environment you'll have to omit the `-PskipBundlePlugin` option.
+NB: If you want to use the quickfixj-all JAR in an OSGi environment you'll have to use the `-PbundlePlugin` option.
 
 ## importing the project into the IDE
 
@@ -62,7 +62,7 @@ When the project is first created, it will not have the generated message classe
 
 If the IDE reports some errors after the compilation with `mvn clean package`, try to use `mvn clean install`, like:
 ```
-$ mvn clean install -Dmaven.javadoc.skip=true -DskipTests -PskipBundlePlugin,minimal-fix-latest
+$ mvn clean install -Dmaven.javadoc.skip=true -DskipTests -Pminimal-fix-latest
 ```
 
 ## configuration options

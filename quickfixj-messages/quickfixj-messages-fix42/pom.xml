@@ -92,27 +92,6 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>bundle-manifest</id>
-						<phase>process-classes</phase>
-						<goals>
-							<goal>manifest</goal>
-						</goals>
-						<configuration>
-							<instructions>
-								<Export-Package>quickfix.field;version="${project.version}";uses:=quickfix,quickfix.fix42;version="${project.version}";uses:=quickfix,quickfix.field;version="${project.version}"</Export-Package>
-								<Import-Package>quickfix,quickfix.field;version="${project.version}"</Import-Package>
-								<Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=${jdkLevel}))"</Require-Capability>
-							</instructions>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
@@ -122,9 +101,6 @@
 						<include>quickfix/field/*.class</include>
 						<include>quickfix/fix42/**</include>
 					</includes>
-					<archive>
-						<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-					</archive>
 				</configuration>
 			</plugin>
 
@@ -137,24 +113,9 @@
 						<include>quickfix/fix42/**</include>
 						<include>quickfix/field/**</include>
 					</includes>
-					<archive>
-						<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-					</archive>
 				</configuration>
 			</plugin>
 		</plugins>
 
 	</build>
-	<!--
-						<include>quickfix/fix42/**.java</include>
-						<include>quickfix/field/FutSettDate2.java</include> <included here as in 4.1 it has a different type>
-						<include>quickfix/field/OpenClose.java</include>	<included here as in 4.0, 4.1 it has a different type>
-						<include>quickfix/field/ClearingAccount.java</include>
-						<include>quickfix/field/ClearingFirm.java</include>
-						<include>quickfix/field/DiscretionOffset.java</include>
-						<include>quickfix/field/Rule80A.java</include>
-						<include>quickfix/field/OnBehalfOfSendingTime.java</include>
-						<include>quickfix/field/IDSource.java</include>
-						<include>quickfix/field/MaturityDay.java</include>
-	-->
 </project>
